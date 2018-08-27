@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+        <title>Event Manager</title>
+
+        <!-- CSS  -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+        <link href="/css/app.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    </head>
+    <header>
+        <nav class="blue darken-1" role="navigation">
+            <div class="nav-wrapper container">
+                <a href="./" class="brand-logo center"><i class="material-icons large">event</i>Events Manager</a>
+
+                {{> (menuView)}}
+                {{!-- {{> user_section}} --}}
+            </div>
+        </nav>
+    </header>
+    <body>
+        <div class="container">
+            {{{body}}}
+        </div>
+    </body>
+    <footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="/js/materialize.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var elems = document.querySelectorAll('.datepicker');
+                var instances = M.Datepicker.init(elems);
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+                var elems = document.querySelectorAll('select');
+                var instances = M.FormSelect.init(elems);
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+                var elem = document.querySelector('.collapsible.expandable');
+                var instance = M.Collapsible.init(elem, { accordion: false });
+            });
+        </script>
+    </footer>
+</html>

@@ -1,0 +1,35 @@
+<div class="container">
+    <h4>Add An Event:</h4>
+    <form action='/add_event' method='post' id='add_event_form' class="col s12">            
+            <div class="row">
+                <div class="input-field col s2">
+                    <input name="Date" id="Date" type="text" class="datepicker">
+                    <label for="Date">Event Date</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8">
+                    <input name="Title" id="Title" type="text" class="validate">
+                    <label for="Title">Event Title</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8">
+                    <textarea name="Description" id="Description" class="materialize-textarea">Enter a description for your event.</textarea>
+                    <label for="Description">Event Description</label>
+                </div>
+            </div>
+            <select name="userID">
+                    <option value="" disabled selected>Select Invitees:</option>
+                    {{#each users}}
+                        <option value="{{this._id}}">{{this.firstName}} {{this.lastName}}</option>
+                    {{/each}}
+                </select>
+            <div class="row">
+                <div class="col s10">
+                    <button type="submit" class="waves-effect waves-light btn green darken-1"><i class="material-icons left">note_add</i>Add Event</button>                                
+                    <a href="./" class="btn waves-effects waves-light blue darken-3">Cancel</a> 
+                </div>               
+            </div>
+    </form>
+</div>

@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <div class="col s4"></div>
+                <h5>{{event.Title}}</h5>
+                <h6>{{formatDate event.Date "dddd, MMM DD, YYYY"}}</h6>
+                <h6>Owner: {{event.Owner.firstName}} {{event.Owner.lastName}}</h6>
+                <div class="divider"></div>
+                <br>
+                <p class="card_desc">{{event.Description}}</p>
+                {{> (editView event.Owner._id)}}
+            </div>
+        </div>
+    </div>
+</div>

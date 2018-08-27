@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="section">
+        <div class="row">
+            <a href="/add_event" class="waves-effect waves-light btn green darken-1">
+                <i class="material-icons left">add_circle_outline</i>Add A New Event</a>
+        </div>
+        <!--   cards Section   -->
+        <div class="row">
+        {{#each events}}          
+            <div class="col s4">
+                <div class="card small">
+                    <div class="card-action">
+                        <a href="./event_details/{{this._id}}" class="waves-effect waves-light btn blue darken-3">
+                        <i class="material-icons left">info_outline</i>Event Details</a>
+                    </div>
+                    
+                    <div class="card-content">
+                        <h5>{{this.Title}}</h5>
+                        <h6>{{formatDate this.Date "dddd, MMM DD, YYYY"}}</h6>
+                        <h6>Owner: {{this.Owner.firstName}} {{this.Owner.lastName}}</h6>
+                        <div class="divider"></div>
+                        <br>
+                        <p class="card_desc">{{this.Description}}</p>                       
+                    </div>
+                </div>
+            </div>            
+        {{/each}} 
+        </div>
+            <!--   end cards Section   -->
+    </div>
+</div>
