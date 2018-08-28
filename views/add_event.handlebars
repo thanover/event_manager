@@ -19,8 +19,7 @@
                     <label for="Description">Event Description</label>
                 </div>
             </div>
-            <select name="userID">
-                    <option value="" disabled selected>Select Invitees:</option>
+            <select multiple='multiple' name="invitees">                
                     {{#each users}}
                         <option value="{{this._id}}">{{this.firstName}} {{this.lastName}}</option>
                     {{/each}}

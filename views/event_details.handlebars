@@ -8,7 +8,15 @@
                 <div class="divider"></div>
                 <br>
                 <p class="card_desc">{{event.Description}}</p>
+                <h1>Invitees:</h1>
+                <ol>
+                {{#each invitees}}
+                    <p>{{this.firstName}}</p>
+                {{/each}}
+                </ol>
+
                 {{> (editView event.Owner._id)}}
+
             </div>
         </div>
     </div>
