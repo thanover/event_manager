@@ -19,8 +19,8 @@ let getUserSection = () => {
 let editView = (ownerID) => {
     let userID = String(global.user._id).trim();
     ownerID = String(ownerID).trim();
-    isOwner = checkIfOwner(ownerID);
-    isAdmin = checkIfAdmin();
+    var isOwner = userID == ownerID;
+    var isAdmin = global.user.type == 'admin';
     if(isAdmin || isOwner){
         return 'edit_view';
     }else {

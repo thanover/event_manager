@@ -6,7 +6,7 @@ db.once('open', () => {
     console.log('connected to mongodb')
 })
 db.on('error', (err) => {
-    console.log(err);
+    console.trace(err);
 })
 
 module.exports = {

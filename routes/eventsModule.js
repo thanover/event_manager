@@ -9,8 +9,7 @@ const displayEvents = (req, res, next) => {
                 console.log(err)
             }
             res.render(
-                'events',
-                {
+                'events', {
                     title: 'events',
                     events
                 }
@@ -27,8 +26,7 @@ const addEvent = (req, res, next) => {
             return res.render('404');
 
         res.render(
-            'add_event',
-            {
+            'add_event', {
                 users
             }
         );
@@ -41,7 +39,6 @@ const saveEvent = (req, res, next) => {
     event.Date = req.body.Date;
     event.Description = req.body.Description;
     event.Owner = global.user._id;
-    console.trace(req.body.invitees);
     let invitees = req.body.invitees;
 
     invitees.forEach(invitee => {
@@ -81,28 +78,23 @@ const displayEventDetails = (req, res, next) => {
 
     Event.findById(id)
         .populate('Owner')
+        .populate('Invites.invited')
+        .populate('Invites.accepted')
+        .populate('Invites.declined')
         .exec((err, event) => {
-            var tmpEvent = event.toObject();
-            var tmpInvitees = [];
-            var invitees = tmpEvent.Invites.invited;
-            console.trace(invitees);
-            invitees.forEach(invitee => {
-                User.findById(invitee, (err, invitee) => {
-                    tmpInvitees.push(invitee);
-                });
-            });
             if (err)
                 console.log("Error Selecting : %s ", err);
             if (!event)
                 return res.render('404');
-            // console.trace(event);
-            res.render('event_details',
-                {
-                    event,
-                    invitees: tmpInvitees
-                }
-            );
-
+            var invited = event.Invites.invited;
+            var accepted = event.Invites.accepted;
+            var declined = event.Invites.declined;
+            res.render('event_details', {
+                event,
+                invited,
+                accepted,
+                declined
+            });
         });
 };
 
